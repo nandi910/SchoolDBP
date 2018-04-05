@@ -66,6 +66,7 @@
             this.MinimizeBox = false;
             this.Name = "LogRegistForm";
             this.Text = "LogRegistForm";
+            this.Load += new System.EventHandler(this.LogRegistForm_Load);
             this.ResumeLayout(false);
 
         }

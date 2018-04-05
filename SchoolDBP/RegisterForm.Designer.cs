@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.usernameBox = new System.Windows.Forms.RichTextBox();
-            this.passwordBox = new System.Windows.Forms.RichTextBox();
-            this.firstNameBox = new System.Windows.Forms.RichTextBox();
-            this.lastNameBox = new System.Windows.Forms.RichTextBox();
+            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.firstNameBox = new System.Windows.Forms.TextBox();
+            this.lastNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.emailBox = new System.Windows.Forms.RichTextBox();
+            this.emailBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.year1rad = new System.Windows.Forms.RadioButton();
             this.year2rad = new System.Windows.Forms.RadioButton();
@@ -53,9 +53,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.closeBtn = new System.Windows.Forms.Button();
             this.sendEmail = new System.Windows.Forms.Button();
-            this.verifyBox = new System.Windows.Forms.RichTextBox();
+            this.verifyBox = new System.Windows.Forms.TextBox();
             this.verifyBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.yearGBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -64,34 +63,35 @@
             // usernameBox
             // 
             this.usernameBox.Location = new System.Drawing.Point(12, 12);
+            this.usernameBox.MaxLength = 20;
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(137, 27);
+            this.usernameBox.Size = new System.Drawing.Size(137, 20);
             this.usernameBox.TabIndex = 0;
-            this.usernameBox.Text = "";
             // 
             // passwordBox
             // 
             this.passwordBox.Location = new System.Drawing.Point(12, 45);
+            this.passwordBox.MaxLength = 20;
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(137, 27);
+            this.passwordBox.PasswordChar = '*';
+            this.passwordBox.Size = new System.Drawing.Size(137, 20);
             this.passwordBox.TabIndex = 1;
-            this.passwordBox.Text = "";
             // 
             // firstNameBox
             // 
             this.firstNameBox.Location = new System.Drawing.Point(12, 78);
+            this.firstNameBox.MaxLength = 50;
             this.firstNameBox.Name = "firstNameBox";
-            this.firstNameBox.Size = new System.Drawing.Size(137, 27);
+            this.firstNameBox.Size = new System.Drawing.Size(137, 20);
             this.firstNameBox.TabIndex = 2;
-            this.firstNameBox.Text = "";
             // 
             // lastNameBox
             // 
             this.lastNameBox.Location = new System.Drawing.Point(12, 111);
+            this.lastNameBox.MaxLength = 50;
             this.lastNameBox.Name = "lastNameBox";
-            this.lastNameBox.Size = new System.Drawing.Size(137, 27);
+            this.lastNameBox.Size = new System.Drawing.Size(137, 20);
             this.lastNameBox.TabIndex = 3;
-            this.lastNameBox.Text = "";
             // 
             // label1
             // 
@@ -132,10 +132,10 @@
             // emailBox
             // 
             this.emailBox.Location = new System.Drawing.Point(12, 144);
+            this.emailBox.MaxLength = 50;
             this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(137, 27);
+            this.emailBox.Size = new System.Drawing.Size(137, 20);
             this.emailBox.TabIndex = 7;
-            this.emailBox.Text = "";
             // 
             // label8
             // 
@@ -288,7 +288,7 @@
             this.groupBox1.Size = new System.Drawing.Size(256, 38);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Semester";
             // 
             // groupBox2
             // 
@@ -301,7 +301,7 @@
             this.groupBox2.Size = new System.Drawing.Size(255, 46);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Specialization";
             // 
             // closeBtn
             // 
@@ -327,9 +327,8 @@
             // 
             this.verifyBox.Location = new System.Drawing.Point(356, 294);
             this.verifyBox.Name = "verifyBox";
-            this.verifyBox.Size = new System.Drawing.Size(137, 27);
+            this.verifyBox.Size = new System.Drawing.Size(137, 20);
             this.verifyBox.TabIndex = 31;
-            this.verifyBox.Text = "";
             // 
             // verifyBtn
             // 
@@ -341,23 +340,12 @@
             this.verifyBtn.UseVisualStyleBackColor = true;
             this.verifyBtn.Click += new System.EventHandler(this.verifyBtn_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(490, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 328);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.verifyBtn);
             this.Controls.Add(this.verifyBox);
             this.Controls.Add(this.sendEmail);
@@ -394,15 +382,15 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox usernameBox;
-        private System.Windows.Forms.RichTextBox passwordBox;
-        private System.Windows.Forms.RichTextBox firstNameBox;
-        private System.Windows.Forms.RichTextBox lastNameBox;
+        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.TextBox firstNameBox;
+        private System.Windows.Forms.TextBox lastNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox emailBox;
+        private System.Windows.Forms.TextBox emailBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton year1rad;
         private System.Windows.Forms.RadioButton year2rad;
@@ -419,9 +407,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.Button sendEmail;
-        private System.Windows.Forms.RichTextBox verifyBox;
+        private System.Windows.Forms.TextBox verifyBox;
         private System.Windows.Forms.Button verifyBtn;
-        private System.Windows.Forms.Button button1;
     }
 }
 

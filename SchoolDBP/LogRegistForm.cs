@@ -49,5 +49,10 @@ namespace SchoolDBP
         {
             this.Close();
         }
+
+        private void LogRegistForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("[PH] MEANS PLACEHOLDER. IF STILL THERE, CHANGE WHEN DONE.");
+        }
     }
 }

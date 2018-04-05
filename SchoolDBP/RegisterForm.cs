@@ -15,29 +15,68 @@ namespace SchoolDBP
             InitializeComponent();
         }
 
-        int temp = 0;
+        private int temp = Convert.ToInt32(null);
         Random rand = new Random((int)DateTime.Now.Ticks);
-        string user, pass, firstN, lastN;
-        int year, spec;
-        bool semester;
-        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Data.mdf;Integrated Security=True";
+        private string user = null;
+        private string pass = null;
+        private string firstN = null;
+        private string lastN = null;
+        private int year = 0;
+        private int spec = 0;
+        private int semester = 0;
+        private static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nandi\\Desktop\\SchoolDBP\\SchoolDBP\\Data.mdf;Integrated Security=True";
+        
 
-        public bool checkExistingUser(string input)
+        private bool check_formula_empty()
         {
-            DataTable dt = new DataTable();
-            
+            bool tempEmpty = true;
+
+            if (usernameBox.Text == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (passwordBox.Text == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (firstNameBox.Text == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (lastNameBox.Text == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (year == 0)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (semester == 0)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (spec == 0)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            if (emailBox.Text == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
+            return tempEmpty;
+        }
+
+        private bool checkExistingUser(string input)
+        {
             try
             {
                 SqlConnection conn = new SqlConnection(connectionString);
-                SqlCommand cmd = new SqlCommand("Select username from users where username= @Username", conn);
+                SqlCommand cmd = new SqlCommand("SELECT username FROM users WHERE username= @Username", conn);
                 cmd.Parameters.AddWithValue("@Username", usernameBox.Text);
                 conn.Open();
                 var result = cmd.ExecuteScalar();
                 if (result != null)
-                {
-                    MessageBox.Show(string.Format("Username {0} already exist", usernameBox.Text));
                     return true;
-                }
                 else
                     return false;
             }
@@ -56,7 +95,7 @@ namespace SchoolDBP
             return str.ToString();
         }
 
-        public static string SHA512Hash(string input)
+        private static string SHA512Hash(string input)
         {
             SHA512 sha512 = SHA512Managed.Create();
             byte[] bytes = Encoding.UTF8.GetBytes(input);
@@ -86,12 +125,12 @@ namespace SchoolDBP
 
         private void semester1rad_CheckedChanged(object sender, EventArgs e)
         {
-            semester = false;
+            semester = 1;
         }
 
         private void semester2rad_CheckedChanged(object sender, EventArgs e)
         {
-            semester = true;
+            semester = 2;
         }
 
         private void spec1rad_CheckedChanged(object sender, EventArgs e)
@@ -111,26 +150,10 @@ namespace SchoolDBP
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            DataTable dt_users = new DataTable();
-            dt_users = DatabaseHelper.load_users();
-            int dr = dt_users.Rows.Count;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            string SQL = "INSERT into users (username, password) values(@username,@password)";
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = SQL;
-            cmd.Connection = conn;
-            cmd.Parameters.AddWithValue("@username", usernameBox.Text);
-            cmd.Parameters.AddWithValue("@password", passwordBox.Text);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Row inserted");
-            conn.Close();
-            //string UpdateSQL = "UPDATE users SET username=@username, password=@password";
+            //DataTable dt_users = new DataTable();
+            //dt_users = DatabaseHelper.load_users();
+            //int dr = dt_users.Rows.Count;
+            
         }
 
         private void spec4rad_CheckedChanged(object sender, EventArgs e)
@@ -145,16 +168,18 @@ namespace SchoolDBP
         
         private void sendEmail_Click(object sender, EventArgs e)
         {
+            
+
             if(checkExistingUser(usernameBox.Text))
             {
-                
+                MessageBox.Show("User already exists.");
             }
             else
             {
-                if(usernameBox.Text != "")
+                if(!check_formula_empty())
                 {
-                    string app_mail = "szivacsnandi@gmail.com";
-                    string app_password = "NandiSetH";
+                    string app_mail = "unidbproj@gmail.com";
+                    string app_password = "iP1HcFr,ne";
                     temp = rand.Next(100000, 999999);
                     SmtpClient client = new SmtpClient
                     {
@@ -169,6 +194,7 @@ namespace SchoolDBP
                     {
                         MailMessage mail = new MailMessage(app_mail, emailBox.Text, "Verification Code", Convert.ToString(temp));
                         client.Send(mail);
+                        MessageBox.Show("Check your mail");
                     }
                     catch (Exception err)
                     {
@@ -177,27 +203,53 @@ namespace SchoolDBP
                 }
                 else
                 {
-                    MessageBox.Show("Username box cannot be empty");
+                    MessageBox.Show("Fill out the formula");
                 }
             }
         }
 
         private void verifyBtn_Click(object sender, EventArgs e)
         {
-            if (checkExistingUser(usernameBox.Text))
+            if (Convert.ToInt32(verifyBox.Text) != temp)
             {
-                if (Convert.ToInt32(verifyBox.Text) == temp)
+                MessageBox.Show("Wrong verification code");
+            }
+            else
+            {
+                user = usernameBox.Text;
+                pass = SHA512Hash(passwordBox.Text);
+                firstN = firstNameBox.Text;
+                lastN = lastNameBox.Text;
+
+                SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+                //SQLUsers
                 {
-                    MessageBox.Show("User already exists");
+                    string SQLUsers = "INSERT INTO users VALUES(@username, @password)";
+                    SqlCommand cmdUsers = new SqlCommand(SQLUsers, conn);
+                    cmdUsers.Parameters.AddWithValue("@username", user);
+                    cmdUsers.Parameters.AddWithValue("@password", pass);
+                    cmdUsers.ExecuteScalar();
                 }
-                else
+                //SQLData
+                try{
+                    string SQLData = "INSERT INTO data (FirstName, LastName, Specialization, Year, Semester) VALUES(@FirstName,@LastName,@Specialization,@Year,@Semester)";
+                    SqlCommand cmdData = new SqlCommand(SQLData, conn);
+                    cmdData.Parameters.AddWithValue("@FirstName", firstN);
+                    cmdData.Parameters.AddWithValue("@LastName", lastN);
+                    cmdData.Parameters.AddWithValue("@Specialization", spec);
+                    cmdData.Parameters.AddWithValue("@Year", year);
+                    cmdData.Parameters.AddWithValue("@Semester", semester);
+                    cmdData.ExecuteScalar();
+                }
+                catch(Exception err)
                 {
-                    user = usernameBox.Text;
-                    pass = SHA512Hash(passwordBox.Text);
-                    firstN = firstNameBox.Text;
-                    lastN = lastNameBox.Text;
-                    MessageBox.Show("Registration Successful");
+                    MessageBox.Show(err.Message);
                 }
+
+                conn.Close();
+                
+                MessageBox.Show("Registration Successful, to log in, restart the app[PH].");
             }
         }
     }

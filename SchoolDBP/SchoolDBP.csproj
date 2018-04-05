@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GVars.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
