@@ -55,6 +55,7 @@
             this.sendEmail = new System.Windows.Forms.Button();
             this.verifyBox = new System.Windows.Forms.RichTextBox();
             this.verifyBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.yearGBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -340,12 +341,23 @@
             this.verifyBtn.UseVisualStyleBackColor = true;
             this.verifyBtn.Click += new System.EventHandler(this.verifyBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(490, 81);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 328);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.verifyBtn);
             this.Controls.Add(this.verifyBox);
             this.Controls.Add(this.sendEmail);
@@ -409,6 +421,7 @@
         private System.Windows.Forms.Button sendEmail;
         private System.Windows.Forms.RichTextBox verifyBox;
         private System.Windows.Forms.Button verifyBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

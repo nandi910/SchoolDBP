@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
@@ -30,40 +25,26 @@ namespace SchoolDBP
         public bool checkExistingUser(string input)
         {
             DataTable dt = new DataTable();
-            string SQL = "SELECT * FROM users WHERE username is " + input + ";";
-
+            
             try
             {
                 SqlConnection conn = new SqlConnection(connectionString);
+                SqlCommand cmd = new SqlCommand("Select username from users where username= @Username", conn);
+                cmd.Parameters.AddWithValue("@Username", usernameBox.Text);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(SQL, conn);
-                SqlDataAdapter DTAdapter = new SqlDataAdapter(cmd);
-                try
+                var result = cmd.ExecuteScalar();
+                if (result != null)
                 {
-                    SqlCommand chckusr = new SqlCommand("SELECT COUNT * FROM users WHERE ([username] = @user;", conn);
-                    chckusr.Parameters.AddWithValue("@user", input);
-
-                    int userExist = (int)chckusr.ExecuteScalar();
-
-                    if (userExist > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    MessageBox.Show(string.Format("Username {0} already exist", usernameBox.Text));
+                    return true;
                 }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
+                else
                     return false;
-                }
             }
-            catch (Exception err)
+            catch(Exception err)
             {
                 MessageBox.Show(err.Message);
-                return false;
+                return true;
             }
         }
 
@@ -135,6 +116,23 @@ namespace SchoolDBP
             int dr = dt_users.Rows.Count;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            string SQL = "INSERT into users (username, password) values(@username,@password)";
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = SQL;
+            cmd.Connection = conn;
+            cmd.Parameters.AddWithValue("@username", usernameBox.Text);
+            cmd.Parameters.AddWithValue("@password", passwordBox.Text);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Row inserted");
+            conn.Close();
+            //string UpdateSQL = "UPDATE users SET username=@username, password=@password";
+        }
+
         private void spec4rad_CheckedChanged(object sender, EventArgs e)
         {
             spec = 4;
@@ -147,26 +145,40 @@ namespace SchoolDBP
         
         private void sendEmail_Click(object sender, EventArgs e)
         {
-            string app_mail = "szivacsnandi@gmail.com";
-            string app_password = "NandiSetH";
-            temp = rand.Next(10000,99999);
-            SmtpClient client = new SmtpClient
+            if(checkExistingUser(usernameBox.Text))
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new System.Net.NetworkCredential(app_mail, app_password),
-            };
-            
-            try
-            {
-                MailMessage mail = new MailMessage(app_mail, emailBox.Text, "Verification Code", Convert.ToString(temp));
-                client.Send(mail);
+                
             }
-            catch(Exception err)
+            else
             {
-                MessageBox.Show(err.Message);
+                if(usernameBox.Text != "")
+                {
+                    string app_mail = "szivacsnandi@gmail.com";
+                    string app_password = "NandiSetH";
+                    temp = rand.Next(100000, 999999);
+                    SmtpClient client = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        Credentials = new System.Net.NetworkCredential(app_mail, app_password),
+                    };
+
+                    try
+                    {
+                        MailMessage mail = new MailMessage(app_mail, emailBox.Text, "Verification Code", Convert.ToString(temp));
+                        client.Send(mail);
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username box cannot be empty");
+                }
             }
         }
 

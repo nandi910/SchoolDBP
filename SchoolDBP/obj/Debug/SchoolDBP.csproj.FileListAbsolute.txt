@@ -14,3 +14,19 @@ C:\Users\nandi\Desktop\School Database Project\SchoolDBP\SchoolDBP\obj\Debug\Sch
 C:\Users\nandi\Desktop\School Database Project\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.LoginForm.resources
 C:\Users\nandi\Desktop\School Database Project\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.StudentForm.resources
 C:\Users\nandi\Desktop\School Database Project\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.TeacherForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\bin\Debug\Data.mdf
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\bin\Debug\Data_log.ldf
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\bin\Debug\SchoolDBP.exe.config
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\bin\Debug\SchoolDBP.exe
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\bin\Debug\SchoolDBP.pdb
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.csprojResolveAssemblyReference.cache
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.LoginForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.RegisterForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.LogRegistForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.Properties.Resources.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.StudentForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.TeacherForm.resources
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.csproj.GenerateResource.cache
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.csproj.CoreCompileInputs.cache
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.exe
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Debug\SchoolDBP.pdb
