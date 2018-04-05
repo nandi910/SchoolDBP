@@ -55,6 +55,8 @@
             this.sendEmail = new System.Windows.Forms.Button();
             this.verifyBox = new System.Windows.Forms.TextBox();
             this.verifyBtn = new System.Windows.Forms.Button();
+            this.confirmPass = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.yearGBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -340,12 +342,31 @@
             this.verifyBtn.UseVisualStyleBackColor = true;
             this.verifyBtn.Click += new System.EventHandler(this.verifyBtn_Click);
             // 
+            // confirmPass
+            // 
+            this.confirmPass.Location = new System.Drawing.Point(214, 45);
+            this.confirmPass.Name = "confirmPass";
+            this.confirmPass.PasswordChar = '*';
+            this.confirmPass.Size = new System.Drawing.Size(137, 20);
+            this.confirmPass.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(357, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Confirm Password";
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 328);
             this.ControlBox = false;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.confirmPass);
             this.Controls.Add(this.verifyBtn);
             this.Controls.Add(this.verifyBox);
             this.Controls.Add(this.sendEmail);
@@ -409,6 +430,8 @@
         private System.Windows.Forms.Button sendEmail;
         private System.Windows.Forms.TextBox verifyBox;
         private System.Windows.Forms.Button verifyBtn;
+        private System.Windows.Forms.TextBox confirmPass;
+        private System.Windows.Forms.Label label5;
     }
 }
 

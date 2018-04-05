@@ -24,8 +24,13 @@ namespace SchoolDBP
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            DataTable dt_users = new DataTable();
-            dt_users = DatabaseHelper.load_users();
+            //DataTable dt_users = new DataTable();
+            //dt_users = DatabaseHelper.load_users();
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

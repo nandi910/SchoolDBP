@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Data.SqlClient;
 
 namespace SchoolDBP
 {
@@ -9,67 +6,33 @@ namespace SchoolDBP
 
     class DatabaseHelper
     {
-        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Data.mdf;Integrated Security=True";
+        private static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nandi\\Desktop\\SchoolDBP\\SchoolDBP\\Data.mdf;Integrated Security=True";
 
-        public static DataTable load_users()
+        public static void addNewUsers(string user, string pass, string firstN, string lastN, int spec, int year, int sem)
         {
-            DataTable dt = new DataTable();
-            string SQL = "SELECT * FROM users WHERE userList_ID is null;";
-
-            try
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            // SQL Users
             {
-                SqlConnection conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(SQL, conn);
-                SqlDataAdapter DTAdapter = new SqlDataAdapter(cmd);
-                DTAdapter.Fill(dt);
+                string SQLUsers = "INSERT INTO users VALUES(@username, @password)";
+                SqlCommand cmdUsers = new SqlCommand(SQLUsers, conn);
+                cmdUsers.Parameters.AddWithValue("@username", user);
+                cmdUsers.Parameters.AddWithValue("@password", pass);
+                cmdUsers.ExecuteScalar();
             }
-            catch (Exception err)
+            // SQL Data
             {
-                MessageBox.Show(err.Message);
+                string SQLData = "INSERT INTO data (FirstName, LastName, Specialization, Year, Semester) VALUES(@FirstName,@LastName,@Specialization,@Year,@Semester)";
+                SqlCommand cmdData = new SqlCommand(SQLData, conn);
+                cmdData.Parameters.AddWithValue("@FirstName", firstN);
+                cmdData.Parameters.AddWithValue("@LastName", lastN);
+                cmdData.Parameters.AddWithValue("@Specialization", spec);
+                cmdData.Parameters.AddWithValue("@Year", year);
+                cmdData.Parameters.AddWithValue("@Semester", sem);
+                cmdData.ExecuteScalar();
+
+                conn.Close();
             }
-
-            return dt;
-        }
-
-        public static DataTable load_data()
-        {
-            DataTable dt = new DataTable();
-            string SQL = "SELECT * FROM data WHERE userData_ID is null;";
-
-            try
-            {
-                SqlConnection conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(SQL, conn);
-                SqlDataAdapter DTAdapter = new SqlDataAdapter(cmd);
-                DTAdapter.Fill(dt);
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-
-            return dt;
-        }
-
-        public class users_columns
-        {
-            public const string username = "username";
-            public const string password = "password";
-            public const string userList_ID = "userList_ID";
-        }
-
-        public class data_columns
-        {
-            public const string FirstName = "FirstName";
-            public const string LastName = "LastName";
-            public const string Specialization = "Specialization";
-            public const string Year = "Year";
-            public const string Semester = "Semester";
-            public const string Discipline1 = "Discipline1";
-            public const string Discipline2 = "Discipline2";
-            public const string userData_ID = "userData_ID";
         }
     }
 }

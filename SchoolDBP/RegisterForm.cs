@@ -63,6 +63,10 @@ namespace SchoolDBP
                 tempEmpty = true;
             else
                 tempEmpty = false;
+            if (confirmPass == null)
+                tempEmpty = true;
+            else
+                tempEmpty = false;
             return tempEmpty;
         }
 
@@ -86,23 +90,7 @@ namespace SchoolDBP
                 return true;
             }
         }
-
-        private static string bytesToString(byte[] hash)
-        {
-            StringBuilder str = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-                str.Append(hash[i].ToString("X2"));
-            return str.ToString();
-        }
-
-        private static string SHA512Hash(string input)
-        {
-            SHA512 sha512 = SHA512Managed.Create();
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            byte[] hash = sha512.ComputeHash(bytes);
-            return bytesToString(hash);
-        }
-    
+        
         private void year1rad_CheckedChanged(object sender, EventArgs e)
         {
             year = 1;
@@ -176,7 +164,7 @@ namespace SchoolDBP
             }
             else
             {
-                if(!check_formula_empty())
+                if(!check_formula_empty() && passwordBox.Text == confirmPass.Text)
                 {
                     string app_mail = "unidbproj@gmail.com";
                     string app_password = "iP1HcFr,ne";
@@ -203,7 +191,7 @@ namespace SchoolDBP
                 }
                 else
                 {
-                    MessageBox.Show("Fill out the formula");
+                    MessageBox.Show("[PH]Fill out the formula");
                 }
             }
         }
@@ -217,37 +205,11 @@ namespace SchoolDBP
             else
             {
                 user = usernameBox.Text;
-                pass = SHA512Hash(passwordBox.Text);
+                pass = customFuncs.SHA512Hash(passwordBox.Text);
                 firstN = firstNameBox.Text;
                 lastN = lastNameBox.Text;
-
-                SqlConnection conn = new SqlConnection(connectionString);
-                conn.Open();
-                //SQLUsers
-                {
-                    string SQLUsers = "INSERT INTO users VALUES(@username, @password)";
-                    SqlCommand cmdUsers = new SqlCommand(SQLUsers, conn);
-                    cmdUsers.Parameters.AddWithValue("@username", user);
-                    cmdUsers.Parameters.AddWithValue("@password", pass);
-                    cmdUsers.ExecuteScalar();
-                }
-                //SQLData
-                try{
-                    string SQLData = "INSERT INTO data (FirstName, LastName, Specialization, Year, Semester) VALUES(@FirstName,@LastName,@Specialization,@Year,@Semester)";
-                    SqlCommand cmdData = new SqlCommand(SQLData, conn);
-                    cmdData.Parameters.AddWithValue("@FirstName", firstN);
-                    cmdData.Parameters.AddWithValue("@LastName", lastN);
-                    cmdData.Parameters.AddWithValue("@Specialization", spec);
-                    cmdData.Parameters.AddWithValue("@Year", year);
-                    cmdData.Parameters.AddWithValue("@Semester", semester);
-                    cmdData.ExecuteScalar();
-                }
-                catch(Exception err)
-                {
-                    MessageBox.Show(err.Message);
-                }
-
-                conn.Close();
+                
+                DatabaseHelper.addNewUsers(user, pass, firstN, lastN, spec, year, semester);
                 
                 MessageBox.Show("Registration Successful, to log in, restart the app[PH].");
             }
