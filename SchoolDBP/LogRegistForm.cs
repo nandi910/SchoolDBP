@@ -19,30 +19,16 @@ namespace SchoolDBP
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Form LoginForm = new LoginForm();
-                LoginForm.Show();
-                this.Hide();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            Form LoginForm = new LoginForm();
+            LoginForm.Show();
+            this.Hide();
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Form RegisterForm = new RegisterForm();
-                RegisterForm.Show();
-                this.Hide();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            Form RegisterForm = new RegisterForm();
+            RegisterForm.Show();
+            this.Hide();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)

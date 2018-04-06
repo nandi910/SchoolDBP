@@ -24,7 +24,6 @@ namespace SchoolDBP
         private int year = 0;
         private int spec = 0;
         private int semester = 0;
-        private static readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nandi\\Desktop\\SchoolDBP\\SchoolDBP\\Data.mdf;Integrated Security=True";
         
 
         private bool check_formula_empty()
@@ -74,7 +73,7 @@ namespace SchoolDBP
         {
             try
             {
-                SqlConnection conn = new SqlConnection(connectionString);
+                SqlConnection conn = new SqlConnection(GVars.connectionString());
                 SqlCommand cmd = new SqlCommand("SELECT username FROM users WHERE username= @Username", conn);
                 cmd.Parameters.AddWithValue("@Username", usernameBox.Text);
                 conn.Open();

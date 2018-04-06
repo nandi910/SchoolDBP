@@ -14,10 +14,11 @@ namespace SchoolDBP
             conn.Open();
             // SQL Users
             {
-                string SQLUsers = "INSERT INTO users VALUES(@username, @password)";
+                string SQLUsers = "INSERT INTO users VALUES(@username, @password, @type)";
                 SqlCommand cmdUsers = new SqlCommand(SQLUsers, conn);
                 cmdUsers.Parameters.AddWithValue("@username", user);
                 cmdUsers.Parameters.AddWithValue("@password", pass);
+                cmdUsers.Parameters.AddWithValue("@type", "Student");
                 cmdUsers.ExecuteScalar();
             }
             // SQL Data

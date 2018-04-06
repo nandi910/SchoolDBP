@@ -17,5 +17,10 @@ namespace SchoolDBP
         {
             return _userID;
         }
+        private static readonly string _connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nandi\\Desktop\\SchoolDBP\\SchoolDBP\\Data.mdf;Integrated Security=True";
+        public static string connectionString()
+        {
+            return _connectionString;
+        }
     }
 }

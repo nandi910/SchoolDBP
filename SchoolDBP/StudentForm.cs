@@ -16,5 +16,10 @@ namespace SchoolDBP
         {
             InitializeComponent();
         }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

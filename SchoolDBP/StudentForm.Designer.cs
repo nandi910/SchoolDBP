@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.closeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Location = new System.Drawing.Point(713, 415);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(75, 23);
+            this.closeBtn.TabIndex = 0;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // StudentForm
             // 
@@ -36,6 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.closeBtn);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.ResumeLayout(false);
@@ -43,5 +55,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button closeBtn;
     }
 }
