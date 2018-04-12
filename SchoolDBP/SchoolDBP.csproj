@@ -62,11 +62,6 @@
   <ItemGroup>
     <Compile Include="customFuncs.cs" />
     <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="DataDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="GVars.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -124,17 +119,6 @@
     <EmbeddedResource Include="TeacherForm.resx">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataDataSet.xsc">
-      <DependentUpon>DataDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DataDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataDataSet.xss">
-      <DependentUpon>DataDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

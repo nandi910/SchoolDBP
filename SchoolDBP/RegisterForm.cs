@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using System.Net.Mail;
 
 namespace SchoolDBP
@@ -208,7 +206,7 @@ namespace SchoolDBP
                 firstN = firstNameBox.Text;
                 lastN = lastNameBox.Text;
                 
-                DatabaseHelper.addNewUsers(user, pass, firstN, lastN, spec, year, semester);
+                DatabaseHelper.addNewUsers(user, pass, firstN, lastN, spec, year, semester, 0, 0, 0, 0);
                 
                 MessageBox.Show("Registration Successful, to log in, restart the app[PH].");
             }
