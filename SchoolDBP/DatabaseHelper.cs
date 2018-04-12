@@ -1,5 +1,5 @@
 ﻿using System.Data.SqlClient;
-using System.Data;
+using System;
 
 
 namespace SchoolDBP
@@ -47,17 +47,12 @@ namespace SchoolDBP
             }
         }
 
-        public static DataTable getData()
+        public static int getDiscipData(string slct, string from, string userID)
         {
+            string SQL = "SELECT " + slct + " FROM " + from + " WHERE " + userID + "=" + GVars.getUserID();
             SqlConnection conn = new SqlConnection(GVars.connectionString());
-            conn.Open();
-            string SQL = "SELECT * FROM data";
             SqlCommand cmd = new SqlCommand(SQL, conn);
-
-            DataTable dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
-            conn.Close();
-            return dt;
+            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }

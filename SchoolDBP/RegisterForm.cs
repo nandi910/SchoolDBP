@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Net.Mail;
@@ -22,7 +21,6 @@ namespace SchoolDBP
         private int year = 0;
         private int spec = 0;
         private int semester = 0;
-        
 
         private bool check_formula_empty()
         {
