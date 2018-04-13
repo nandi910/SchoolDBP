@@ -52,7 +52,10 @@ namespace SchoolDBP
             string SQL = "SELECT " + slct + " FROM " + from + " WHERE " + userID + "=" + GVars.getUserID();
             SqlConnection conn = new SqlConnection(GVars.connectionString());
             SqlCommand cmd = new SqlCommand(SQL, conn);
-            return Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Open();
+            int temp = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            return temp;
         }
     }
 }

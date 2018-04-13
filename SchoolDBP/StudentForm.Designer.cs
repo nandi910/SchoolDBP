@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.closeBtn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dis1Label = new System.Windows.Forms.Label();
+            this.dis2Label = new System.Windows.Forms.Label();
+            this.dis1Box = new System.Windows.Forms.TextBox();
+            this.dis2Box = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -45,37 +45,39 @@
             this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
-            // label1
+            // dis1Label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.dis1Label.AutoSize = true;
+            this.dis1Label.Location = new System.Drawing.Point(12, 9);
+            this.dis1Label.Name = "dis1Label";
+            this.dis1Label.Size = new System.Drawing.Size(35, 13);
+            this.dis1Label.TabIndex = 1;
+            this.dis1Label.Text = "label1";
             // 
-            // label2
+            // dis2Label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.dis2Label.AutoSize = true;
+            this.dis2Label.Location = new System.Drawing.Point(12, 41);
+            this.dis2Label.Name = "dis2Label";
+            this.dis2Label.Size = new System.Drawing.Size(35, 13);
+            this.dis2Label.TabIndex = 2;
+            this.dis2Label.Text = "label2";
             // 
-            // textBox1
+            // dis1Box
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.dis1Box.Location = new System.Drawing.Point(117, 6);
+            this.dis1Box.Name = "dis1Box";
+            this.dis1Box.ReadOnly = true;
+            this.dis1Box.Size = new System.Drawing.Size(38, 20);
+            this.dis1Box.TabIndex = 3;
             // 
-            // textBox2
+            // dis2Box
             // 
-            this.textBox2.Location = new System.Drawing.Point(89, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.dis2Box.Location = new System.Drawing.Point(117, 41);
+            this.dis2Box.Name = "dis2Box";
+            this.dis2Box.ReadOnly = true;
+            this.dis2Box.Size = new System.Drawing.Size(38, 20);
+            this.dis2Box.TabIndex = 4;
             // 
             // StudentForm
             // 
@@ -83,10 +85,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dis2Box);
+            this.Controls.Add(this.dis1Box);
+            this.Controls.Add(this.dis2Label);
+            this.Controls.Add(this.dis1Label);
             this.Controls.Add(this.closeBtn);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
@@ -99,9 +101,9 @@
         #endregion
 
         private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label dis1Label;
+        private System.Windows.Forms.Label dis2Label;
+        private System.Windows.Forms.TextBox dis1Box;
+        private System.Windows.Forms.TextBox dis2Box;
     }
 }
