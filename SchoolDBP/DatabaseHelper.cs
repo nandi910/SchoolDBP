@@ -42,6 +42,7 @@ namespace SchoolDBP
                 cmdDisciplines.Parameters.AddWithValue("@C1", c1);
                 cmdDisciplines.Parameters.AddWithValue("@D2", d2);
                 cmdDisciplines.Parameters.AddWithValue("@C2", c2);
+                cmdDisciplines.ExecuteScalar();
 
                 conn.Close();
             }
@@ -49,6 +50,8 @@ namespace SchoolDBP
 
         public static int getDiscipData(string slct, string from, string userID)
         {
+            // I know this is vulnerable to SQL injection but the user cannot influence the input of this in any way, shape or form so it's not an issue
+
             string SQL = "SELECT " + slct + " FROM " + from + " WHERE " + userID + "=" + GVars.getUserID();
             SqlConnection conn = new SqlConnection(GVars.connectionString());
             SqlCommand cmd = new SqlCommand(SQL, conn);
