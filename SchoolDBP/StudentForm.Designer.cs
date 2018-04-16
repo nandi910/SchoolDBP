@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeBtn = new System.Windows.Forms.Button();
             this.dis1Label = new System.Windows.Forms.Label();
             this.dis2Label = new System.Windows.Forms.Label();
             this.dis1Box = new System.Windows.Forms.TextBox();
             this.dis2Box = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Location = new System.Drawing.Point(713, 415);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(75, 23);
-            this.closeBtn.TabIndex = 0;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // dis1Label
             // 
@@ -84,12 +73,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.dis2Box);
             this.Controls.Add(this.dis1Box);
             this.Controls.Add(this.dis2Label);
             this.Controls.Add(this.dis1Label);
-            this.Controls.Add(this.closeBtn);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.Load += new System.EventHandler(this.StudentForm_Load);
@@ -99,8 +88,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.Label dis1Label;
         private System.Windows.Forms.Label dis2Label;
         private System.Windows.Forms.TextBox dis1Box;

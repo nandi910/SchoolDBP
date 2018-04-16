@@ -51,7 +51,6 @@
             this.yearGBox = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.closeBtn = new System.Windows.Forms.Button();
             this.sendEmail = new System.Windows.Forms.Button();
             this.verifyBox = new System.Windows.Forms.TextBox();
             this.verifyBtn = new System.Windows.Forms.Button();
@@ -85,7 +84,7 @@
             this.firstNameBox.MaxLength = 50;
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(137, 20);
-            this.firstNameBox.TabIndex = 2;
+            this.firstNameBox.TabIndex = 3;
             // 
             // lastNameBox
             // 
@@ -93,7 +92,7 @@
             this.lastNameBox.MaxLength = 50;
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(137, 20);
-            this.lastNameBox.TabIndex = 3;
+            this.lastNameBox.TabIndex = 4;
             // 
             // label1
             // 
@@ -137,7 +136,7 @@
             this.emailBox.MaxLength = 50;
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(137, 20);
-            this.emailBox.TabIndex = 7;
+            this.emailBox.TabIndex = 5;
             // 
             // label8
             // 
@@ -305,16 +304,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Specialization";
             // 
-            // closeBtn
-            // 
-            this.closeBtn.Location = new System.Drawing.Point(677, 295);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(75, 23);
-            this.closeBtn.TabIndex = 29;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
-            // 
             // sendEmail
             // 
             this.sendEmail.Location = new System.Drawing.Point(275, 295);
@@ -348,7 +337,7 @@
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = '*';
             this.confirmPass.Size = new System.Drawing.Size(137, 20);
-            this.confirmPass.TabIndex = 33;
+            this.confirmPass.TabIndex = 2;
             // 
             // label5
             // 
@@ -364,13 +353,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 328);
-            this.ControlBox = false;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.confirmPass);
             this.Controls.Add(this.verifyBtn);
             this.Controls.Add(this.verifyBox);
             this.Controls.Add(this.sendEmail);
-            this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.yearGBox);
@@ -426,7 +413,6 @@
         private System.Windows.Forms.GroupBox yearGBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.Button sendEmail;
         private System.Windows.Forms.TextBox verifyBox;
         private System.Windows.Forms.Button verifyBtn;

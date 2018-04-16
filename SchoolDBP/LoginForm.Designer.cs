@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeBtn = new System.Windows.Forms.Button();
             this.userBox = new System.Windows.Forms.TextBox();
             this.passBox = new System.Windows.Forms.TextBox();
             this.loginBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Location = new System.Drawing.Point(197, 76);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(75, 25);
-            this.closeBtn.TabIndex = 0;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // userBox
             // 
@@ -93,28 +82,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 111);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(227, 111);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.passBox);
             this.Controls.Add(this.userBox);
-            this.Controls.Add(this.closeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.LoginForm_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.TextBox userBox;
         private System.Windows.Forms.TextBox passBox;
         private System.Windows.Forms.Button loginBtn;

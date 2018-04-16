@@ -13,3 +13,4 @@ C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Release\SchoolDBP.csproj.Generate
 C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Release\SchoolDBP.csproj.CoreCompileInputs.cache
 C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Release\SchoolDBP.exe
 C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Release\SchoolDBP.pdb
+C:\Users\nandi\Desktop\SchoolDBP\SchoolDBP\obj\Release\SchoolDBP.csprojResolveAssemblyReference.cache

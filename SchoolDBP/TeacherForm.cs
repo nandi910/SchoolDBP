@@ -17,6 +17,19 @@ namespace SchoolDBP
         DataTable dt1, dt2;
         SqlCommandBuilder builder1, builder2;
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            foreach (Form openForm in Application.OpenForms)
+            {
+                if (openForm is LoginForm)
+                {
+                    this.Hide();
+                    openForm.Show();
+                    break;
+                }
+            }
+        }
+
         private void TeacherForm_Load(object sender, EventArgs e)
         {
             conn.Open();
@@ -36,12 +49,7 @@ namespace SchoolDBP
             dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.AutoResizeColumns();
         }
-
-        private void closeBtn_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        
         private void updateBtn_Click(object sender, EventArgs e)
         {
             try

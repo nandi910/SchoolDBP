@@ -22,23 +22,36 @@ namespace SchoolDBP
         private int spec = 0;
         private int semester = 0;
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            foreach (Form openForm in Application.OpenForms)
+            {
+                if (openForm is LogRegistForm)
+                {
+                    this.Hide();
+                    openForm.Show();
+                    break;
+                }
+            }
+        }
+
         private bool check_formula_empty()
         {
             bool tempEmpty = true;
 
-            if (usernameBox.Text == null)
+            if (usernameBox.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
-            if (passwordBox.Text == null)
+            if (passwordBox.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
-            if (firstNameBox.Text == null)
+            if (firstNameBox.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
-            if (lastNameBox.Text == null)
+            if (lastNameBox.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
@@ -54,11 +67,11 @@ namespace SchoolDBP
                 tempEmpty = true;
             else
                 tempEmpty = false;
-            if (emailBox.Text == null)
+            if (emailBox.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
-            if (confirmPass == null)
+            if (confirmPass.Text == "")
                 tempEmpty = true;
             else
                 tempEmpty = false;
@@ -144,11 +157,6 @@ namespace SchoolDBP
             spec = 4;
         }
     
-        private void closeBtn_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        
         private void sendEmail_Click(object sender, EventArgs e)
         {
             

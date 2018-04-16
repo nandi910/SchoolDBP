@@ -12,17 +12,19 @@ namespace SchoolDBP
             InitializeComponent();
         }
 
-        private void closeBtn_Click(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            Application.Exit();
+            foreach (Form openForm in Application.OpenForms)
+            {
+                if (openForm is LogRegistForm)
+                {
+                    this.Hide();
+                    openForm.Show();
+                    break;
+                }
+            }
         }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            //DataTable dt_users = new DataTable();
-            //dt_users = DatabaseHelper.load_users();
-        }
-
+        
         private void loginBtn_Click(object sender, EventArgs e)
         {
             string user = userBox.Text;
@@ -73,6 +75,12 @@ namespace SchoolDBP
             }
             else
                 MessageBox.Show("Check Credentials");
+        }
+
+        private void LoginForm_VisibleChanged(object sender, EventArgs e)
+        {
+            userBox.Text = null;
+            passBox.Text = null;
         }
     }
 }

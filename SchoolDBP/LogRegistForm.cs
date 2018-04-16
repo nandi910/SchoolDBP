@@ -17,6 +17,11 @@ namespace SchoolDBP
             InitializeComponent();
         }
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             Form LoginForm = new LoginForm();

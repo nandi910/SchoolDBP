@@ -17,10 +17,18 @@ namespace SchoolDBP
         {
             InitializeComponent();
         }
-
-        private void closeBtn_Click(object sender, EventArgs e)
+        
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            Application.Exit();
+            foreach (Form openForm in Application.OpenForms)
+            {
+                if (openForm is LoginForm)
+                {
+                    this.Hide();
+                    openForm.Show();
+                    break;
+                }
+            }
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
