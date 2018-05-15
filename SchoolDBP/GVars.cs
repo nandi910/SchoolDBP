@@ -1,4 +1,6 @@
-﻿namespace SchoolDBP
+﻿using System;
+
+namespace SchoolDBP
 {
     public static class GVars
     {
@@ -11,7 +13,7 @@
         {
             return _userID;
         }
-        private static readonly string _connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nandi\\Desktop\\SchoolDBP\\SchoolDBP\\Data.mdf;Integrated Security=True;";
+        private static readonly string _connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Environment.CurrentDirectory + "\\Data.mdf;Integrated Security=True;";
         public static string connectionString()
         {
             return _connectionString;
